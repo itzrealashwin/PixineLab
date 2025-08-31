@@ -1,9 +1,12 @@
+
 import Link from "next/link"
 import { ThemeToggle } from "@/components/ThemeToggele"
 import { BentoGrid } from "@/components/bento-grid"
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton, useClerk } from "@clerk/nextjs";
 
 export default function HomePage() {
+
+
   return (
     <main>
 
@@ -76,7 +79,7 @@ export default function HomePage() {
       {/* How it works */}
       <section id="features" className="container mx-auto px-4 py-12 md:py-16">
         <div className="text-center">
-           <h3 className="text-pretty text-2xl font-semibold md:text-3xl">An intelligent workflow, not just a generator</h3>
+          <h3 className="text-pretty text-2xl font-semibold md:text-3xl">An intelligent workflow, not just a generator</h3>
         </div>
         <ol className="mt-8 grid gap-4 sm:grid-cols-3">
           <li className="rounded-lg border bg-card p-4">
@@ -111,28 +114,28 @@ export default function HomePage() {
                   Sign in to generate thumbnails and save your best results.
                 </p>
               </div>
-               <SignedIn>
-                 <Link
-                    href="/imagine"
-                    className="rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors flex-shrink-0"
-                  >
-                    Get started
-                  </Link>
-               </SignedIn>
-               <SignedOut>
+              <SignedIn>
+                <Link
+                  href="/imagine"
+                  className="rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors flex-shrink-0"
+                >
+                  Get started
+                </Link>
+              </SignedIn>
+              <SignedOut>
                 <SignInButton mode="modal">
-                    <button className="rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors flex-shrink-0">
-                        Get started for free
-                    </button>
+                  <button className="rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors flex-shrink-0">
+                    Get started for free
+                  </button>
                 </SignInButton>
-               </SignedOut>
+              </SignedOut>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-    
+
     </main>
   )
 }

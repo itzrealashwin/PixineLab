@@ -29,7 +29,7 @@ export function ImageUploader({ onImageUpload, onImageRemove }) {
         const pureBase64 = base64String.split(',')[1];
         onImageUpload(pureBase64); // Pass the pure base64 string to the parent
       } catch (error) {
-        error("Error converting file to base64:", error);
+        console.error("Error converting file to base64:", error);
       }
     }
   }, [onImageUpload]);
