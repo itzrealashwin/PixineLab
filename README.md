@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pixine Lab - AI Thumbnail Generator
 
-## Getting Started
+**Pixine Lab** is an AI-powered thumbnail generator designed to help content creators produce professional, high-CTR thumbnails for YouTube, Shorts, Udemy courses, and other social media platforms.
 
-First, run the development server:
+---
+
+## Features
+
+* AI-powered thumbnail generation using custom prompts.
+* Optional image upload for reference or background.
+* Customizable settings: **Mood, Style, Ratio, and Placement**.
+* Prompt optimization using **Prompt Rewrite**.
+* Supports multiple platforms: YouTube, Shorts, Udemy, Instagram, and more.
+* Generates multiple variations for **A/B testing**.
+
+---
+
+## Goals
+
+* Simplify the thumbnail creation process for content creators.
+* Enable high-quality, click-worthy thumbnails without graphic design skills.
+* Provide AI-assisted optimization for better engagement.
+* Support multi-platform content with flexible formats and ratios.
+
+---
+
+## Use Cases
+
+* **YouTube Videos & Shorts**: Generate engaging thumbnails to improve click-through rates.
+* **Online Courses (Udemy, Skillshare, etc.)**: Create course thumbnails that attract learners.
+* **Social Media Content**: Instagram, Facebook, and other platforms for promotional visuals.
+* **Marketing & Advertising**: Quickly produce visual content for campaigns.
+* **A/B Testing**: Generate multiple variations to determine the most effective thumbnail.
+
+---
+
+## Project Setup & Installation
+
+### Prerequisites
+
+* Node.js v22 or higher
+* npm or yarn installed
+* Git installed
+
+### Clone Repository
+
+```bash
+git clone https://github.com/itzrealashwin/PixineLab.git
+cd PixineLab
+```
+
+### Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory and add the following variables:
+
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+
+GOOGLE_API_KEY=
+```
+
+### Development Server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* Open [http://localhost:3000](http://localhost:3000) to see the app in the browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build & Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+# or
+yarn build
+yarn start
+```
 
-## Learn More
+* The app will start in production mode.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Brief Workflow
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Login**: Users log in using Clerk authentication.
+2. **Upload Image (Optional)**: Upload a reference/background image.
+3. **Enter Prompt**: Provide a description or video title.
+4. **Configure Settings**: Mood, style, aspect ratio, and placement.
+5. **Generate Prompt Rewrite**: AI optimizes the prompt.
+6. **Confirm or Modify**: User reviews and approves the prompt.
+7. **Generate Thumbnail**: AI produces high-quality thumbnail images.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **Framework & Hosting**: Next.js 15, Vercel
+* **Frontend**: React 19, TailwindCSS 4, next-themes, clsx, tailwind-merge
+* **UI & Accessibility**: Radix UI, Lucide React icons, Geist UI, Sonner
+* **AI Integration**: Google Gen AI Nano (`@google/genai`), Gemini SDK (`@google/generative-ai`), OpenAI SDK
+* **Media & File Handling**: Cloudinary, JSZip, React Dropzone
+* **Validation & Type Safety**: Zod
+* **Development Tools**: ESLint, PostCSS, Turbopack
+
+---
+
+## Contact
+
+For feedback or support:
+
+* **Email:** [maliashwin2005@gmail.com](mailto:maliashwin2005@gmail.com)
+* **GitHub:** [https://github.com/<your-username>](https://github.com/itzrealashwin)
+
+---
+
+> **Note:** Pixine Lab relies on AI models and requires API keys for OpenAI and Google Gen AI services.
