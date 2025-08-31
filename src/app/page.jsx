@@ -61,7 +61,7 @@ export default function HomePage() {
           <div className="mt-8">
             <BentoGrid
               items={[
-                 { src: "/BentoPlaceholder/placeholder (5).png", alt: "Bold callout thumbnail", rowspan: 2 },
+                { src: "/BentoPlaceholder/placeholder (5).png", alt: "Bold callout thumbnail", rowspan: 2 },
                 { src: "/BentoPlaceholder/placeholder (2).png", alt: "Clean product shot" },
                 { src: "/BentoPlaceholder/placeholder (3).png", alt: "Vibrant contrast" },
                 { src: "/BentoPlaceholder/placeholder (4).png", alt: "Creator face emphasis", colspan: 2 },
