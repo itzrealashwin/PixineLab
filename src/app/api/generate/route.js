@@ -1,36 +1,30 @@
 import { NextResponse } from 'next/server';
 import { imageGenerationModel } from '@/lib/gemini';
 import cloudinary from '@/lib/cloudinary';
-import { writeFileSync } from "fs"
 export async function POST(req) {
   try {
     // Now accepting an optional imageData field for image modification.
     const { rewritten_prompt, negative_prompt, ratio, composition_notes, imageData } = await req.json();
-    writeFileSync('geminiprompt.txt', rewritten_prompt + "\n \n");
 
     if (!rewritten_prompt) {
       return NextResponse.json({ error: 'Missing required prompt fields' }, { status: 400 });
     }
 
     const basePrompt = `${rewritten_prompt}. ${composition_notes}. Use a ${ratio} aspect ratio. Avoid generating: ${negative_prompt}. Use model imageData. `;
-    writeFileSync('geminiprompt.txt', basePrompt + "\n \n");
 
     let response;
     const MAX_RETRIES = 2;
 
     for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-      log(`[DEBUG] Image generation attempt ${attempt} of ${MAX_RETRIES}...`);
 
       let promptForThisAttempt = basePrompt;
       if (attempt > 1) {
         // Modify the prompt slightly for the retry attempt
         promptForThisAttempt = `A high-quality, professional photograph of: ${basePrompt}`;
-        log('[DEBUG] Using modified prompt for retry.');
       }
 
       const generationPayload = [{ text: promptForThisAttempt }];
       if (imageData) {
-        log('[DEBUG] Image data provided. Attaching to payload.');
         generationPayload.push({
           inlineData: {
             mimeType: 'image/jpeg', // Or detect dynamically
@@ -50,7 +44,6 @@ export async function POST(req) {
       );
 
       if (hasValidCandidate) {
-        log(`[DEBUG] Success on attempt ${attempt}. Proceeding to upload.`);
         break;
       } else {
         warn(`[WARN] Attempt ${attempt} failed to produce a valid image candidate. Reason: ${response.candidates?.[0]?.finishReason || 'Unknown'}`);
@@ -99,7 +92,6 @@ export async function POST(req) {
     if (imageUrls.length === 0) {
       warn('[WARN] All valid candidates failed to upload. Returning empty array.');
     } else {
-      log('[DEBUG] Successfully uploaded image URLs:', imageUrls);
     }
 
     return NextResponse.json({ images: imageUrls });

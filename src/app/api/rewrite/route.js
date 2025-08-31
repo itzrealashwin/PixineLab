@@ -19,12 +19,10 @@ const rewriteSchema = z.object({
 
 export async function POST(req) {
 
-  log(systemPrompt);
 
   try {
     const body = await req.json();
-    log(body);
-    
+
     const validatedBody = rewriteSchema.safeParse(body);
 
     if (!validatedBody.success) {
